@@ -8,6 +8,7 @@ import { SearchComponent } from './components/search/search.component';
 import { NewButtonComponent } from './components/new-button/new-button.component';
 import { PrimengModule } from '../primeng/primeng.module';
 import { QuotesRoutingModule } from './quotes-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { QuotesRoutingModule } from './quotes-routing.module';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     PrimengModule,
     QuotesRoutingModule
   ]

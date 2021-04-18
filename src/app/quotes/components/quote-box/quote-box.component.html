@@ -1,1 +1,27 @@
-<p>quote-box works!</p>
+<p-fieldset  styleClass="padding-field">
+  <ng-template pTemplate="header"><p>Nicola Tesla</p></ng-template>
+  <ng-template pTemplate="content">
+    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-between">
+      <div class="p-pr-md-3">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Deleniti eligendi esse quia hic, sed vel veniam, itaque, 
+          harum repellendus adipisci magnam fugit natus voluptatum? 
+          Facilis soluta commodi in culpa vitae.
+        </p>
+      </div>
+      <div class="p-d-flex p-flex-row p-flex-md-column p-jc-center p-mt-3 p-mt-md-0 p-mt-lg-0">
+        <button pButton 
+                pRipple 
+                type="button" 
+                icon="pi pi-pencil" 
+                class="p-button-rounded p-button-primary p-m-1"></button>
+        <button pButton 
+                pRipple 
+                type="button" 
+                icon="pi pi-trash" 
+                class="p-button-rounded p-button-danger p-m-1"></button>
+      </div>
+    </div>
+  </ng-template> 
+</p-fieldset>
