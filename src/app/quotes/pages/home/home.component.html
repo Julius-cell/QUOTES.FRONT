@@ -1,22 +1,27 @@
 <div class="p-mb-3 p-text-center">
-  <app-search></app-search>
+  <app-search (onInputAuthor)="searchByAuthor($event)"
+              #searchCmp
+              >
+  </app-search>
 </div>
 <div class="p-mb-3 p-text-center">
-  <app-button></app-button>
+  <app-button [buttonConfig]="searchAllBtnConfig"
+              (click)="searchAll()"
+  >
+  </app-button>
+
+  <app-button [buttonConfig]="searchRandomBtnConfig"
+              (click)="searchRandom()"
+  >
+  </app-button>
 </div>
+
 
 
 <div class="p-grid p-text-center p-jc-center">
-  <div class="p-col-12 p-md-6 p-lg-4">
-    <app-quote-box></app-quote-box>
-  </div>
-  <div class="p-col-12 p-md-6 p-lg-4">
-    <app-quote-box></app-quote-box>
-  </div>
-  <div class="p-col-12 p-md-6 p-lg-4">
-    <app-quote-box></app-quote-box>
-  </div>
-  <div class="p-col-12 p-md-6 p-lg-4">
-    <app-quote-box></app-quote-box>
+  <div *ngFor="let quote of quotes" class="p-col-12 p-md-6 p-lg-4">
+    <app-quote-box [quote]="quote">
+      
+    </app-quote-box>
   </div>
 </div>

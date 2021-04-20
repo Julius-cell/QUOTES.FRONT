@@ -9,6 +9,7 @@ import { NewButtonComponent } from './components/new-button/new-button.component
 import { PrimengModule } from '../primeng/primeng.module';
 import { QuotesRoutingModule } from './quotes-routing.module';
 import { FormsModule } from '@angular/forms';
+import { QuoteService } from './services/quotes.service';
 
 
 @NgModule({
@@ -24,6 +25,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     PrimengModule,
     QuotesRoutingModule
+  ],
+  providers: [
+    QuoteService
   ]
 })
 export class QuotesModule { }

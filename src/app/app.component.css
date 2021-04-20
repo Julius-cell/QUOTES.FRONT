@@ -1,0 +1,6 @@
+div {
+    padding: 0 25px;
+    min-height: calc(100%);
+    padding-bottom: 45px;       /* Same pixels that footer's height  */
+    position: relative;
+}
