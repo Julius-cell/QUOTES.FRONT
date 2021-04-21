@@ -23,10 +23,12 @@ export class SearchComponent implements OnInit {
   }
 
 
-  sendNewValue(event: any) {
+  sendNewValue(event: any) {    
     if (event) {
       this.inputAuthor  = this.quotes.filter(quote => quote.person.includes(event));
-      this.onInputAuthor.emit(this.inputAuthor);
+    } else {
+      this.inputAuthor  = [];
     }
+    this.onInputAuthor.emit(this.inputAuthor);
   }
 }
