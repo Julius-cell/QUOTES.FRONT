@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Quote } from '../../model/quote';
 import { QuoteService } from '../../services/quotes.service';
 
@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   placeholder: string = 'Search by Author'
   inputAuthor: Quote[];
   @Output() onInputAuthor: EventEmitter<Quote[]> = new EventEmitter();
+  @ViewChild('searchCmp') searchCmp: ElementRef<HTMLInputElement>;
 
   constructor(private quoteService: QuoteService) { }
 
@@ -23,7 +24,7 @@ export class SearchComponent implements OnInit {
   }
 
 
-  sendNewValue(event: any) {    
+  sendNewValue(event: any) {   
     if (event) {
       this.inputAuthor  = this.quotes.filter(quote => quote.person.includes(event));
     } else {

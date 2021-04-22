@@ -8,8 +8,9 @@ import { SearchComponent } from './components/search/search.component';
 import { NewButtonComponent } from './components/new-button/new-button.component';
 import { PrimengModule } from '../primeng/primeng.module';
 import { QuotesRoutingModule } from './quotes-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuoteService } from './services/quotes.service';
+import { ModifyComponent } from './pages/modify/modify.component';
 
 
 @NgModule({
@@ -18,12 +19,13 @@ import { QuoteService } from './services/quotes.service';
     ButtonComponent, 
     QuoteBoxComponent, 
     SearchComponent, 
-    NewButtonComponent
+    NewButtonComponent, ModifyComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     PrimengModule,
+    ReactiveFormsModule,
     QuotesRoutingModule
   ],
   providers: [

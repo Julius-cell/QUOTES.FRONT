@@ -1,5 +1,5 @@
 export interface Quote {
-    id: number,
+    _id: number,
     quote: string,
     person: string
 }

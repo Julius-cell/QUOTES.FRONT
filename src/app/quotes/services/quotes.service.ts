@@ -25,8 +25,8 @@ export class QuoteService {
         return this.http.get<Response>(`${this.baseUrl}/api/quotes/random`);
     }
 
-    postQuote(quote: Quote): Observable<Quote> {
-        return this.http.post<Quote>(`${this.baseUrl}/api/quotes`, quote);
+    postQuote(quote: Quote): Observable<Response> {
+        return this.http.post<Response>(`${this.baseUrl}/api/quotes`, quote);
     }
     
     getQuoteByAuthor(author: string): Observable<Quote> {
@@ -34,6 +34,6 @@ export class QuoteService {
     }
 
     deleteQuoteById(id: number): Observable<Quote> {
-        return this.http.get<Quote>(`${this.baseUrl}/api/quotes/${id}`);
+        return this.http.delete<Quote>(`${this.baseUrl}/api/quotes/${id}`);
     }
 }

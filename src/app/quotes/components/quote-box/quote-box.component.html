@@ -12,13 +12,22 @@
                 pRipple 
                 type="button" 
                 icon="pi pi-pencil" 
-                class="p-button-rounded p-button-primary p-m-1"></button>
+                class="p-button-rounded p-button-primary p-m-1"
+                >
+        </button>
         <button pButton 
                 pRipple 
                 type="button" 
                 icon="pi pi-trash" 
-                class="p-button-rounded p-button-danger p-m-1"></button>
+                class="p-button-rounded p-button-danger p-m-1"
+                (click)="deleteQuote(quote._id)"
+                >
+        </button>
       </div>
     </div>
   </ng-template> 
 </p-fieldset>
+
+<p-confirmDialog [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
+<p-toast></p-toast>

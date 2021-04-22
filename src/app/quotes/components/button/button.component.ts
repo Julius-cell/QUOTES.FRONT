@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BtnConfig } from '../../model/btn-config';
 
 @Component({
   selector: 'app-button',
@@ -7,12 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
-  @Input() buttonConfig: any;
-
+  @Input() buttonConfig: BtnConfig;
 
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

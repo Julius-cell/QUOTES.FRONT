@@ -1,9 +1,8 @@
-<ng-container *ngTemplateOutlet="buttonConfig.name === 'all' ? all : random">
-</ng-container>
-
+<!-- <ng-container *ngTemplateOutlet="buttonConfig.name === 'all' ? all : random"> -->
+<div [ngSwitch]="buttonConfig.name">
 
 <!-- All Button -->
-<ng-template #all>
+<div *ngSwitchCase="'all'">
   <button pButton 
         pRipple 
         type="button" 
@@ -14,10 +13,10 @@
     {{buttonConfig.label}}
   </p>
 </button>
-</ng-template>
+</div>
 
 <!-- Random Button -->
-<ng-template #random>
+<div *ngSwitchCase="'random'">
     <button pButton 
         pRipple 
         type="button" 
@@ -28,7 +27,23 @@
       {{buttonConfig.label}}
     </p>
   </button>
-</ng-template>
+</div>
+
+<!-- Save Button -->
+<div *ngSwitchCase="'save'">
+    <button pButton 
+        pRipple 
+        type="button" 
+        class="p-button-rounded"
+        [ngStyle]="buttonConfig.styles"
+        >
+    <p>
+      {{buttonConfig.label}}
+    </p>
+  </button>
+</div>
+
+</div>
 
 
 

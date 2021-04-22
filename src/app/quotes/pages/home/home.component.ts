@@ -1,23 +1,34 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { BtnConfig } from '../../model/btn-config';
+import { Emit } from '../../model/emit';
 import { Quote } from '../../model/quote';
-import { Response } from '../../model/response';
-import { QuoteService } from '../../services/quotes.service';
+
+import { ModifyComponent } from '../modify/modify.component';
 import { SearchComponent } from "../../components/search/search.component";
+
+import { QuoteService } from '../../services/quotes.service';
+import { MessageService } from 'primeng/api'
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [
+    MessageService
+  ]
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
 
   quotes: Quote[];
+  display: boolean = false;
+  title: string;
 
   @ViewChild(SearchComponent) searchCmp: SearchComponent;
-  // @ViewChild('searchCmp') searchCmp: any;
-  // @ViewChildren('searchCmp') searchCmp: ElementRef;
+  @ViewChild(ModifyComponent) modifyCmp: ModifyComponent;
 
-  searchAllBtnConfig = {
+  searchAllBtnConfig: BtnConfig = {
     name: 'all',
     styles: {
       margin: '0 5px'
@@ -32,22 +43,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
     label: 'Search Random'
   }
 
-  constructor(private quoteService: QuoteService) { }
+  constructor(private quoteService: QuoteService,
+              private ms: MessageService) { }
 
-  ngOnInit(): void {
-  }
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    console.log(this.searchCmp.placeholder) // I am a child component!
-  }
-  
+  ngOnInit(): void {}
+
+
   searchAll() {
     this.quoteService.getAllQuotes().subscribe(resp => {
       console.log(resp.data);
       this.quotes = resp.data;
     })
-    // Reset input search
-    this.searchCmp.placeholder = 'Search by Author';
+    this.searchCmp.searchCmp.nativeElement.value = '';
   }
   
   searchRandom() {
@@ -55,13 +62,34 @@ export class HomeComponent implements OnInit, AfterViewInit {
       console.log(resp.data);
       this.quotes = resp.data;
     })
-    // Reset input search
+    this.searchCmp.searchCmp.nativeElement.value = '';
   }
 
   searchByAuthor(event: any) {
     this.quotes = event;
   }
 
+  openAdd() {
+    this.title = 'Add Quote';
+    this.display = true;
+  }
+  
+  hideModify() {
+    this.modifyCmp.myForm.reset();
+  }
 
-
+  saveModify(event: Emit) {
+    this.quoteService.postQuote(event.data).subscribe(resp => {
+      console.log(resp);
+      this.ms.add(
+        {
+          severity: resp.status,
+          summary: resp.status, 
+          detail:'Quote Saved'
+        });
+        // Refresh quotes with new added
+    })
+    this.modifyCmp.myForm.reset();
+    this.display = event.change;
+  }
 }

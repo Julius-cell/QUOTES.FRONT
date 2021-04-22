@@ -1,0 +1,23 @@
+
+<form [formGroup]="myForm">
+    <div class="p-d-flex p-flex-column">
+        <input type="text" 
+               pInputText
+               placeholder="Author" 
+               formControlName="person"
+        />
+        <textarea type="text" 
+                  pInputTextarea 
+                  [rows]="2"
+                  placeholder="Quote" 
+                  formControlName="quote"
+                  class="p-mt-2"
+        ></textarea>
+    </div>
+    <app-button [buttonConfig]="saveBtnConfig"
+                (click)="saveData()"
+                class="p-text-center"
+                type="submit"
+    >
+    </app-button>
+</form>
