@@ -20,8 +20,9 @@
 
 <div class="p-grid p-text-center p-jc-center">
   <div *ngFor="let quote of quotes" class="p-col-12 p-md-6 p-lg-4">
-    <app-quote-box [quote]="quote">
-      
+    <app-quote-box [quote]="quote"
+                   (onModifyQuoteData)="openModify($event)"
+    >
     </app-quote-box>
   </div>
 </div>
@@ -33,7 +34,7 @@
           [modal]=true
           (onHide)=hideModify()
 >
-  <app-modify (onHideModify)=saveModify($event)>
+  <app-modify (onClickSave)=save()>
   </app-modify>
 </p-dialog>
 

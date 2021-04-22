@@ -36,4 +36,9 @@ export class QuoteService {
     deleteQuoteById(id: number): Observable<Quote> {
         return this.http.delete<Quote>(`${this.baseUrl}/api/quotes/${id}`);
     }
+
+    modifyQuoteById(id: number, params: any): Observable<Quote> {
+        return this.http.patch<Quote>(`${this.baseUrl}/api/quotes/modify/${id}`, params);
+    }
+
 }

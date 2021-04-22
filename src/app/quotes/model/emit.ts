@@ -1,4 +1,6 @@
+import { Quote } from "./quote";
+
 export interface Emit {
-    change: boolean,
-    data: any
+    name: string,
+    data: Quote
 }

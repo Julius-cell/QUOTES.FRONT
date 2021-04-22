@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
   quotes: Quote[];
   display: boolean = false;
   title: string;
+  add: boolean;
+  edit: boolean;
+  idToEdit: number;
 
   @ViewChild(SearchComponent) searchCmp: SearchComponent;
   @ViewChild(ModifyComponent) modifyCmp: ModifyComponent;
@@ -44,9 +47,9 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(private quoteService: QuoteService,
-              private ms: MessageService) { }
+    private ms: MessageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 
   searchAll() {
@@ -56,7 +59,7 @@ export class HomeComponent implements OnInit {
     })
     this.searchCmp.searchCmp.nativeElement.value = '';
   }
-  
+
   searchRandom() {
     this.quoteService.getRandomQuote().subscribe(resp => {
       console.log(resp.data);
@@ -69,27 +72,56 @@ export class HomeComponent implements OnInit {
     this.quotes = event;
   }
 
+  openModal() {
+    this.display = true;
+  }
+
+  /**
+   * Función que recibe data de la nueva quote añadida
+   * @param event type Emit
+   */
   openAdd() {
+    this.add = true;
     this.title = 'Add Quote';
     this.display = true;
   }
-  
+
+  openModify(event: Emit) {
+    this.edit = true;
+    this.title = 'Edit Quote';
+    console.log(event.data._id);
+    this.idToEdit = event.data._id;
+    this.modifyCmp.myForm.controls.person.setValue(event.data.person);
+    this.modifyCmp.myForm.controls.quote.setValue(event.data.quote);
+    this.display = true;
+  }
+
   hideModify() {
     this.modifyCmp.myForm.reset();
   }
 
-  saveModify(event: Emit) {
-    this.quoteService.postQuote(event.data).subscribe(resp => {
-      console.log(resp);
-      this.ms.add(
-        {
-          severity: resp.status,
-          summary: resp.status, 
-          detail:'Quote Saved'
-        });
+  save() {
+    let form = this.modifyCmp.myForm.value;
+    if (this.add) {
+      this.quoteService.postQuote(form).subscribe(resp => {
         // Refresh quotes with new added
-    })
+      })
+    }
+    if (this.edit) {
+      this.quoteService
+        .modifyQuoteById(this.idToEdit, form)
+        .subscribe(resp => {
+        // Refresh quotes with new modified
+      })
+    }
+    this.ms.add(
+      {
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Quote Saved'
+      });
     this.modifyCmp.myForm.reset();
-    this.display = event.change;
+    this.display = false;
   }
+  
 }
