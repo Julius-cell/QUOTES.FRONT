@@ -18,6 +18,7 @@ export class QuoteBoxComponent implements OnInit {
 
   @Input() quote: Quote;
   @Output() onModifyQuoteData: EventEmitter<Emit> = new EventEmitter();
+  @Output('parentSearch') parentSearch: EventEmitter<any> = new EventEmitter();
 
   constructor(private cs: ConfirmationService,
     private quoteService: QuoteService,
@@ -37,6 +38,7 @@ export class QuoteBoxComponent implements OnInit {
       accept: () => {
         this.quoteService.deleteQuoteById(id).subscribe(resp => {
           // Refresh Quotes eliminating this one
+          this.parentSearch.emit();
           this.ms.add(
             {
               severity: 'success',

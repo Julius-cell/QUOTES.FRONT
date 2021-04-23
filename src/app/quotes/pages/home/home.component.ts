@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(private quoteService: QuoteService,
-    private ms: MessageService) { }
+              private ms: MessageService) { }
 
   ngOnInit(): void { }
 
@@ -89,7 +89,6 @@ export class HomeComponent implements OnInit {
   openModify(event: Emit) {
     this.edit = true;
     this.title = 'Edit Quote';
-    console.log(event.data._id);
     this.idToEdit = event.data._id;
     this.modifyCmp.myForm.controls.person.setValue(event.data.person);
     this.modifyCmp.myForm.controls.quote.setValue(event.data.quote);
@@ -98,6 +97,8 @@ export class HomeComponent implements OnInit {
 
   hideModify() {
     this.modifyCmp.myForm.reset();
+    this.add = false;
+    this.edit = false;
   }
 
   save() {
@@ -105,6 +106,7 @@ export class HomeComponent implements OnInit {
     if (this.add) {
       this.quoteService.postQuote(form).subscribe(resp => {
         // Refresh quotes with new added
+        this.searchAll();
       })
     }
     if (this.edit) {
@@ -112,6 +114,7 @@ export class HomeComponent implements OnInit {
         .modifyQuoteById(this.idToEdit, form)
         .subscribe(resp => {
         // Refresh quotes with new modified
+        this.searchAll();
       })
     }
     this.ms.add(
