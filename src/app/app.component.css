@@ -4,3 +4,19 @@ div {
     padding-bottom: 45px;       /* Same pixels that footer's height  */
     position: relative;
 }
+
+:host ::ng-deep h1 {
+    color: white;
+    mix-blend-mode: luminosity;
+}
+
+.header-img {
+    background-color: var(--blue-500);
+    position: absolute;
+    width: 100%;
+    height: 125px;
+    left: -0.5px;
+    display: block;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}

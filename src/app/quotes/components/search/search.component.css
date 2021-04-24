@@ -1,0 +1,18 @@
+input {
+    border-radius: 25px;
+    border: 0.5px solid var(--bluegray-400);
+    color: var(--bluegray-400);
+}
+.p-input-icon-left>.p-inputtext {
+    padding-left: 2.5rem;
+}
+.ng-touched::-webkit-input-placeholder {
+    color: var(--bluegray-400);
+}
+.ng-untouched::-webkit-input-placeholder {
+    color: var(--bluegray-400);
+}
+.p-input-icon-left>i:first-of-type {
+    left: 1rem;
+    color: var(--bluegray-400);
+}

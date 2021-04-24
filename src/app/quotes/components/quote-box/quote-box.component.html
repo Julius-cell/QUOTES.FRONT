@@ -1,13 +1,22 @@
-<p-fieldset  styleClass="padding-field">
-  <ng-template pTemplate="header"><p>{{quote.person}}</p></ng-template>
+<p-confirmDialog [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
+<p-toast></p-toast>
+
+<p-card  styleClass="padding-field" 
+         [style]="{'box-shadow': '0 5px 5px -5px black'}"
+         class="p-shadow-5"
+         >
   <ng-template pTemplate="content">
-    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-between">
-      <div class="p-pr-md-3">
+    <div class="p-d-flex  p-ai-center p-jc-between">
+      <div class="p-text-left p-pr-2">
+        <h1>
+          {{quote.person}}
+        </h1>
         <p>
           {{quote.quote}}
         </p>
       </div>
-      <div class="p-d-flex p-flex-row p-flex-md-column p-jc-center p-mt-3 p-mt-md-0 p-mt-lg-0">
+      <div class="p-d-flex p-flex-column p-jc-center">
         <button pButton 
                 pRipple 
                 type="button" 
@@ -27,8 +36,5 @@
       </div>
     </div>
   </ng-template> 
-</p-fieldset>
+</p-card>
 
-<p-confirmDialog [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
-
-<p-toast></p-toast>
