@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
@@ -18,6 +19,7 @@ import { ToastModule } from 'primeng/toast';
     CardModule,
     ConfirmDialogModule,
     DialogModule,
+    DropdownModule,
     FieldsetModule,
     InputTextareaModule,
     InputTextModule,

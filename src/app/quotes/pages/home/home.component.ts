@@ -9,6 +9,7 @@ import { SearchComponent } from "../../components/search/search.component";
 
 import { QuoteService } from '../../services/quotes.service';
 import { MessageService } from 'primeng/api'
+import { Category } from '../../model/category';
 
 
 @Component({
@@ -87,11 +88,16 @@ export class HomeComponent implements OnInit {
   }
 
   openModify(event: Emit) {
+    const form = this.modifyCmp.myForm.controls;
     this.edit = true;
     this.title = 'Edit Quote';
     this.idToEdit = event.data._id;
-    this.modifyCmp.myForm.controls.person.setValue(event.data.person);
-    this.modifyCmp.myForm.controls.quote.setValue(event.data.quote);
+    const nameCategory = this.modifyCmp.categories.filter((category: Category) => {
+      return event.data.category === category._id;
+    })    
+    form.person.setValue(event.data.person);
+    form.quote.setValue(event.data.quote);
+    form.category.setValue(nameCategory[0]);
     this.display = true;
   }
 
@@ -103,12 +109,9 @@ export class HomeComponent implements OnInit {
 
   save() {
     let form = this.modifyCmp.myForm.value;
-    console.log(form);
     if (this.add) {
       this.quoteService.postQuote(form).subscribe(resp => {
-        // Refresh quotes with new added
-        console.log(resp);
-        
+        // Refresh quotes with new added        
         this.searchAll();
       })
     }

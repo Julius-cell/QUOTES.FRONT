@@ -3,10 +3,10 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { Quote } from "../model/quote";
-
-// import { environment } from "src/environments/environment";
-import { environment } from "src/environments/environment.prod";
 import { Response } from "../model/response";
+
+import { environment } from "src/environments/environment";
+// import { environment } from "src/environments/environment.prod";
 
 
 
@@ -32,6 +32,10 @@ export class QuoteService {
     
     getQuoteByAuthor(author: string): Observable<Quote> {
         return this.http.get<Quote>(`${this.baseUrl}/api/quotes/author/${author}`);
+    }
+
+    getQuotesByCategory(categoryId: string): Observable<Quote> {
+        return this.http.get<Quote>(`${this.baseUrl}/api/quotes/${categoryId}`);
     }
 
     deleteQuoteById(id: number): Observable<Quote> {

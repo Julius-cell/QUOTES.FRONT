@@ -11,6 +11,7 @@ import { QuotesRoutingModule } from './quotes-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuoteService } from './services/quotes.service';
 import { ModifyComponent } from './pages/modify/modify.component';
+import { CategoryService } from './services/category.service';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ModifyComponent } from './pages/modify/modify.component';
     QuotesRoutingModule
   ],
   providers: [
-    QuoteService
+    QuoteService,
+    CategoryService
   ]
 })
 export class QuotesModule { }

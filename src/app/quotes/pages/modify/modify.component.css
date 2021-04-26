@@ -1,0 +1,10 @@
+:host ::ng-deep .p-multiselect,
+:host ::ng-deep .p-dropdown {
+  margin-top: 8px;
+}
+:host ::ng-deep .p-inputtext,
+:host ::ng-deep .p-multiselect,
+:host ::ng-deep .p-dropdown {
+  border-radius: 20px;
+  width: 100%;
+}

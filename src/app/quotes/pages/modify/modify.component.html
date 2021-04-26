@@ -1,34 +1,37 @@
 
-<form [formGroup]="myForm">
+<form [formGroup]="myForm" (ngSubmit)="saveData()">
     <div class="p-d-flex p-flex-column">
         <input type="text" 
                pInputText
                placeholder="Author" 
                formControlName="person"
-        />
-        <p-multiSelect [options]="categories" 
+               [style]="{'margin-top': '5px'}"
+               [ngClass]="{'ng-invalid ng-dirty': campoInvalido('person')}"
+               />
+        <!-- <p-multiSelect [options]="categories" 
                        defaultLabel="Select categories"
                        formControlName="category"
                        display="chip"
+                       [ngClass]="{'ng-invalid ng-dirty': campoInvalido('category')}"
                        >
-        </p-multiSelect>
-        <!-- <input type="text" 
-               pInputText
-               placeholder="Category" 
-               formControlName="category"
-        /> -->
+        </p-multiSelect> -->
+        <p-dropdown [options]="categories" 
+                    optionLabel="name"
+                    placeholder="Select categories" 
+                    formControlName="category"
+                    [showClear]="true"
+                    [ngClass]="{'ng-invalid ng-dirty': campoInvalido('category')}"
+        ></p-dropdown>
         <textarea type="text" 
                   pInputTextarea 
                   [rows]="3"
                   placeholder="Quote" 
                   formControlName="quote"
                   class="p-mt-2"
-        ></textarea>
+                  [ngClass]="{'ng-invalid ng-dirty': campoInvalido('quote')}"
+                  ></textarea>
     </div>
     <app-button [buttonConfig]="saveBtnConfig"
-                (click)="saveData()"
                 class="p-text-center"
-                type="submit"
-    >
-    </app-button>
+    ></app-button>
 </form>

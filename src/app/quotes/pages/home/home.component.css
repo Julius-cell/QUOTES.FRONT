@@ -2,8 +2,16 @@
     width: 40vw;
 }
 
+:host ::ng-deep .p-dialog .p-dialog-header {
+    padding: 1rem;
+}
+
+:host ::ng-deep .p-multiselect.p-multiselect-chip .p-multiselect-token {
+    border-radius: 20px;
+}
+
 @media only screen and (max-width: 600px) {
     :host ::ng-deep .p-dialog {
-        width: 90vw;
+        width: 80vw;
     }
-  }
+}
