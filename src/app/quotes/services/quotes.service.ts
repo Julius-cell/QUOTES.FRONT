@@ -5,8 +5,8 @@ import { Observable } from "rxjs";
 import { Quote } from "../model/quote";
 import { Response } from "../model/response";
 
-import { environment } from "src/environments/environment";
-// import { environment } from "src/environments/environment.prod";
+// import { environment } from "src/environments/environment";
+import { environment } from "src/environments/environment.prod";
 
 
 
