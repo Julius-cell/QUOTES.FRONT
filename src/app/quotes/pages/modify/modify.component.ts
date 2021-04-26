@@ -12,9 +12,13 @@ export class ModifyComponent implements OnInit {
 
   @Output() onClickSave: EventEmitter<boolean> = new EventEmitter();
 
+  categories: any[] = ["love", "filosofy", "friend"];
+  selectedCategories: any[];
+
   myForm: FormGroup = this.fb.group({
     person: ['', [Validators.required, Validators.maxLength(20)]],
-    quote: ['', [Validators.required]]
+    quote: ['', [Validators.required]],
+    category: [[], [Validators.required]],
   })
 
   saveBtnConfig: BtnConfig = {

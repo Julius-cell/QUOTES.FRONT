@@ -6,9 +6,20 @@
                placeholder="Author" 
                formControlName="person"
         />
+        <p-multiSelect [options]="categories" 
+                       defaultLabel="Select categories"
+                       formControlName="category"
+                       display="chip"
+                       >
+        </p-multiSelect>
+        <!-- <input type="text" 
+               pInputText
+               placeholder="Category" 
+               formControlName="category"
+        /> -->
         <textarea type="text" 
                   pInputTextarea 
-                  [rows]="2"
+                  [rows]="3"
                   placeholder="Quote" 
                   formControlName="quote"
                   class="p-mt-2"

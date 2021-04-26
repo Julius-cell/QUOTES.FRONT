@@ -103,9 +103,12 @@ export class HomeComponent implements OnInit {
 
   save() {
     let form = this.modifyCmp.myForm.value;
+    console.log(form);
     if (this.add) {
       this.quoteService.postQuote(form).subscribe(resp => {
         // Refresh quotes with new added
+        console.log(resp);
+        
         this.searchAll();
       })
     }

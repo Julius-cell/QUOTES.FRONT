@@ -1,8 +1,9 @@
 .float {
     position: fixed;
     top: 40px;
-    right: 40px;
-    color: #FFF;
+    right: 25px;
+    color: var(--blue-500);
+    background-color: white;
     border-radius: 50px;
     text-align: center;
     font-size: 30px;

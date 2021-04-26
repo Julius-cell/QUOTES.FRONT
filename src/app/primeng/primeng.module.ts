@@ -7,6 +7,8 @@ import { DialogModule } from 'primeng/dialog';
 import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ToastModule } from 'primeng/toast';
 
 
@@ -19,6 +21,8 @@ import { ToastModule } from 'primeng/toast';
     FieldsetModule,
     InputTextareaModule,
     InputTextModule,
+    MultiSelectModule,
+    ScrollPanelModule,
     ToastModule
   ]
 })
