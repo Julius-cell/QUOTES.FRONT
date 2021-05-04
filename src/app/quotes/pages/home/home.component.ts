@@ -55,7 +55,6 @@ export class HomeComponent implements OnInit {
 
   searchAll() {
     this.quoteService.getAllQuotes().subscribe(resp => {
-      console.log(resp.data);
       this.quotes = resp.data;
     })
     this.searchCmp.searchCmp.nativeElement.value = '';
@@ -97,7 +96,7 @@ export class HomeComponent implements OnInit {
     event.data.category.map(categoryId => {
       catergories.push(this.modifyCmp.categories.filter((category: Category) => categoryId === category._id));
     });
-        
+
     form.person.setValue(event.data.person);
     form.quote.setValue(event.data.quote);
     form.category.setValue(catergories.flat());

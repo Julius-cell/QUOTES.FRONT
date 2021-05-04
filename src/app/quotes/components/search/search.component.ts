@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
 
   sendNewValue(event: any) {   
     if (event) {
-      this.inputAuthor  = this.quotes.filter(quote => quote.person.includes(event));
+      this.inputAuthor  = this.quotes.filter(quote => quote.person.toLowerCase().includes(event));      
     } else {
       this.inputAuthor  = [];
     }
