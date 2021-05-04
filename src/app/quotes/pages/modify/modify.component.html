@@ -8,20 +8,15 @@
                [style]="{'margin-top': '5px'}"
                [ngClass]="{'ng-invalid ng-dirty': campoInvalido('person')}"
                />
-        <!-- <p-multiSelect [options]="categories" 
-                       defaultLabel="Select categories"
+        <p-multiSelect [options]="categories" 
+                       placeholder="Select categories"
+                       optionLabel="name"
                        formControlName="category"
                        display="chip"
+                       scrollHeight="100px"
                        [ngClass]="{'ng-invalid ng-dirty': campoInvalido('category')}"
                        >
-        </p-multiSelect> -->
-        <p-dropdown [options]="categories" 
-                    optionLabel="name"
-                    placeholder="Select categories" 
-                    formControlName="category"
-                    [showClear]="true"
-                    [ngClass]="{'ng-invalid ng-dirty': campoInvalido('category')}"
-        ></p-dropdown>
+        </p-multiSelect>
         <textarea type="text" 
                   pInputTextarea 
                   [rows]="3"

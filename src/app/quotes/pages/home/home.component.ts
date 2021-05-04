@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(private quoteService: QuoteService,
-              private ms: MessageService) { }
+    private ms: MessageService) { }
 
   ngOnInit(): void { }
 
@@ -92,12 +92,15 @@ export class HomeComponent implements OnInit {
     this.edit = true;
     this.title = 'Edit Quote';
     this.idToEdit = event.data._id;
-    const nameCategory = this.modifyCmp.categories.filter((category: Category) => {
-      return event.data.category === category._id;
-    })    
+
+    let catergories: any = [];
+    event.data.category.map(categoryId => {
+      catergories.push(this.modifyCmp.categories.filter((category: Category) => categoryId === category._id));
+    });
+        
     form.person.setValue(event.data.person);
     form.quote.setValue(event.data.quote);
-    form.category.setValue(nameCategory[0]);
+    form.category.setValue(catergories.flat());
     this.display = true;
   }
 
@@ -119,9 +122,9 @@ export class HomeComponent implements OnInit {
       this.quoteService
         .modifyQuoteById(this.idToEdit, form)
         .subscribe(resp => {
-        // Refresh quotes with new modified
-        this.searchAll();
-      })
+          // Refresh quotes with new modified
+          this.searchAll();
+        })
     }
     this.ms.add(
       {
@@ -132,5 +135,5 @@ export class HomeComponent implements OnInit {
     this.modifyCmp.myForm.reset();
     this.display = false;
   }
-  
+
 }
