@@ -14,4 +14,7 @@
     :host ::ng-deep .p-dialog {
         width: 80vw;
     }
+    :host ::ng-deep .mobile-toast {
+        width: 250px;
+    }
 }

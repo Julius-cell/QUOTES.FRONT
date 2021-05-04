@@ -24,6 +24,7 @@
       <app-quote-box [quote]="quote"
                      (onModifyQuoteData)="openModify($event)"
                      (parentSearch)="searchAll()"
+                     (toastDelete)="deployToast($event)"
       >
       </app-quote-box>
     </div>
@@ -43,4 +44,5 @@
 <app-new-button (click)="openAdd()">
 </app-new-button>
 
-<p-toast></p-toast>
+<p-toast styleClass="mobile-toast"
+></p-toast>

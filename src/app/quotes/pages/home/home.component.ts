@@ -116,6 +116,7 @@ export class HomeComponent implements OnInit {
         // Refresh quotes with new added        
         this.searchAll();
       })
+      this.deployToast('Quote saved');
     }
     if (this.edit) {
       this.quoteService
@@ -124,15 +125,19 @@ export class HomeComponent implements OnInit {
           // Refresh quotes with new modified
           this.searchAll();
         })
+        this.deployToast('Quote updated');
     }
+    this.modifyCmp.myForm.reset();
+    this.display = false;
+  }
+
+  deployToast(detail: string) {
     this.ms.add(
       {
         severity: 'success',
         summary: 'Success',
-        detail: 'Quote Saved'
+        detail: `${detail}`
       });
-    this.modifyCmp.myForm.reset();
-    this.display = false;
   }
 
 }
