@@ -4,12 +4,13 @@ import { BtnConfig } from '../../model/btn-config';
 import { Emit } from '../../model/emit';
 import { Quote } from '../../model/quote';
 
-import { ModifyComponent } from '../modify/modify.component';
+import { ModifyComponent } from '../../components/modify/modify.component';
 import { SearchComponent } from "../../components/search/search.component";
 
 import { QuoteService } from '../../services/quotes.service';
 import { MessageService } from 'primeng/api'
 import { Category } from '../../model/category';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -48,9 +49,14 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(private quoteService: QuoteService,
-    private ms: MessageService) { }
+              private ms: MessageService,
+              private router: Router) { }
 
   ngOnInit(): void { }
+
+  logout() {
+    this.router.navigateByUrl('/auth');
+  }
 
 
   searchAll() {

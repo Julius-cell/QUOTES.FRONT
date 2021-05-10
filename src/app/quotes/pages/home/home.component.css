@@ -2,6 +2,13 @@
     width: 40vw;
 }
 
+:host .p-button.p-button-text {
+    position: absolute;
+    color: white;
+    top: 2%;
+    left: 4%;
+}
+
 :host ::ng-deep .p-dialog .p-dialog-header {
     padding: 1rem;
 }

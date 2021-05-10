@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RespUser } from '../../models/response';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +16,18 @@ export class LoginComponent implements OnInit {
     password: [, [Validators.required, Validators.minLength(8)]]
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   login() {
     console.log(this.loginForm.value);
-    console.log(this.loginForm.valid);
-    
+    this.authService.login(this.loginForm.value).subscribe((resp: RespUser) => {
+      console.log(resp);
+    })
+    // this.router.navigateByUrl('/quotes');
   }
 
 }

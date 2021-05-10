@@ -1,8 +1,17 @@
+<button pButton 
+        pRipple 
+        type="button" 
+        icon="pi pi-sign-out" 
+        class="p-button-rounded p-button-text"
+        (click)="logout()"
+        ></button>
+
 <div class="p-mb-3 p-text-center">
   <app-search (onInputAuthor)="searchByAuthor($event)"
               >
   </app-search>
 </div>
+
 
 
 <div class="p-d-flex p-mb-3 p-jc-center">

@@ -10,7 +10,7 @@ import { PrimengModule } from '../primeng/primeng.module';
 import { QuotesRoutingModule } from './quotes-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuoteService } from './services/quotes.service';
-import { ModifyComponent } from './pages/modify/modify.component';
+import { ModifyComponent } from './components/modify/modify.component';
 import { CategoryService } from './services/category.service';
 
 
@@ -20,7 +20,8 @@ import { CategoryService } from './services/category.service';
     ButtonComponent, 
     QuoteBoxComponent, 
     SearchComponent, 
-    NewButtonComponent, ModifyComponent
+    NewButtonComponent, 
+    ModifyComponent
   ],
   imports: [
     CommonModule,
