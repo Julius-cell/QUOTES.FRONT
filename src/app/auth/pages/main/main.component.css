@@ -4,7 +4,7 @@
 }
 
 .container-login100 {
-  margin-top: 40px;
+  margin-top: 20px;
   width: 100%;
   min-height: 70vh;
   display: flex;
@@ -22,5 +22,4 @@
   width: 500px;
   background: #fff;
   border-radius: 10px;
-  /* overflow: hidden; */
 }
