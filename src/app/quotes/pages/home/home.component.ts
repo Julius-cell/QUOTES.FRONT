@@ -11,6 +11,7 @@ import { QuoteService } from '../../services/quotes.service';
 import { MessageService } from 'primeng/api'
 import { Category } from '../../model/category';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 
 @Component({
@@ -33,6 +34,10 @@ export class HomeComponent implements OnInit {
   @ViewChild(SearchComponent) searchCmp: SearchComponent;
   @ViewChild(ModifyComponent) modifyCmp: ModifyComponent;
 
+  get user() {
+    return this.authService.user;
+  }
+
   searchAllBtnConfig: BtnConfig = {
     name: 'all',
     styles: {
@@ -50,9 +55,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private quoteService: QuoteService,
               private ms: MessageService,
-              private router: Router) { }
+              private router: Router,
+              private authService: AuthService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    console.log(this.user);
+    
+  }
 
   logout() {
     this.router.navigateByUrl('/auth');

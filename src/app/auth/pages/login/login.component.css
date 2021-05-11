@@ -241,3 +241,17 @@ button:hover {
 .login100-form-btn:disabled {
   background-color: grey;
 }
+:host ::ng-deep .mobile-toast .p-toast-summary {
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 600px) {
+  :host ::ng-deep .mobile-toast {
+      width: 250px;
+  }
+  :host ::ng-deep .mobile-toast .p-toast-message-content {
+    align-items: center;
+    padding: 5px;
+    font-size: 0.9rem;
+  }
+}
