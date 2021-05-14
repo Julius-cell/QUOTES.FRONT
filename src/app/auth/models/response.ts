@@ -2,7 +2,7 @@ import { User } from "./user";
 
 export interface RespUser {
   status: string,
-  token?: number,
+  token?: string,
   data?: User
   error?: string
 }

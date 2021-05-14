@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable, of } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 
@@ -20,19 +21,25 @@ export class AuthService {
     return { ...this._user };
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private cookieService: CookieService) { }
 
   login(user: UserLogin): Observable<string> {
     return this.http.post<RespUser>(`${this.baseUrl}/api/user/login`, user)
       .pipe(
         tap(resp => {
           if (resp.status === 'success') {
+            this.cookieService.set('jwt', resp.token!)
             this._user = { name: resp.data?.name!, email: resp.data?.email! }
           }
         }),
         map(resp => resp.status),
         catchError(err => of(err.error))
       );
+  }
+
+  logout(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/api/user/logout`);
   }
 
   register(user: UserRegister): Observable<RespUser> {
