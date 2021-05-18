@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, of } from 'rxjs';
@@ -6,7 +6,7 @@ import { tap, map, catchError } from 'rxjs/operators';
 
 import { User, UserLogin, UserRegister } from 'src/app/auth/models/user';
 
-import { environment } from "src/environments/environment.prod";
+import { environment } from "src/environments/environment";
 import { RespUser } from '../models/response';
 
 @Injectable({
@@ -22,14 +22,14 @@ export class AuthService {
   }
 
   constructor(private http: HttpClient,
-    private cookieService: CookieService) { }
+              private cookieService: CookieService) { }
 
   login(user: UserLogin): Observable<string> {
     return this.http.post<RespUser>(`${this.baseUrl}/api/user/login`, user)
       .pipe(
-        tap(resp => {
+        tap(resp => {          
           if (resp.status === 'success') {
-            this.cookieService.set('jwt', resp.token!)
+            this.cookieService.set('jwt', resp.token!, Date.parse(resp.expires!))
             this._user = { name: resp.data?.name!, email: resp.data?.email! }
           }
         }),
@@ -38,11 +38,18 @@ export class AuthService {
       );
   }
 
-  logout(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/api/user/logout`);
-  }
-
   register(user: UserRegister): Observable<RespUser> {
     return this.http.post<RespUser>(`${this.baseUrl}/api/user/signup`, user);
+  }
+
+  isLoggin(): Observable<boolean> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.cookieService.get('jwt')}`
+    });
+    return this.http.get<any>(`${this.baseUrl}/api/user/logged`, {headers})
+      .pipe(
+        map(resp => resp.message),
+        catchError(err => of(false))
+      );
   }
 }

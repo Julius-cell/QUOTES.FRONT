@@ -7,6 +7,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent } from './pages/main/main.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from '../primeng/primeng.module';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -20,6 +21,9 @@ import { PrimengModule } from '../primeng/primeng.module';
     AuthRoutingModule,
     ReactiveFormsModule,
     PrimengModule
+  ],
+  providers: [
+    CookieService
   ]
 })
 export class AuthModule { }

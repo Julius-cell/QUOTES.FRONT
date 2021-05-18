@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api'
 import { Category } from '../../model/category';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -56,7 +57,8 @@ export class HomeComponent implements OnInit {
   constructor(private quoteService: QuoteService,
               private ms: MessageService,
               private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private cookieService: CookieService) { }
 
   ngOnInit(): void { 
     console.log(this.user);
@@ -64,24 +66,31 @@ export class HomeComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout().subscribe(resp => {
-      console.log(resp);
-    })
+    this.cookieService.delete('jwt');
     this.router.navigateByUrl('/auth');
   }
 
 
   searchAll() {
-    this.quoteService.getAllQuotes().subscribe(resp => {
-      this.quotes = resp.data;
+    this.quoteService.getAllQuotes().subscribe((resp: any) => {
+      if (resp.status === 'success') {
+        console.log(resp);
+        this.quotes = resp.data;
+      } else {
+        this.ms.add({severity:'error', summary: `${resp.status}`, detail: `${resp.error}`});
+      }
     })
     this.searchCmp.searchCmp.nativeElement.value = '';
   }
 
   searchRandom() {
     this.quoteService.getRandomQuote().subscribe(resp => {
-      console.log(resp.data);
-      this.quotes = resp.data;
+      if (resp.status === 'success') {
+        console.log(resp);
+        this.quotes = resp.data;
+      } else {
+        this.ms.add({severity:'error', summary: `${resp.status}`, detail: `${resp.error}`});
+      }
     })
     this.searchCmp.searchCmp.nativeElement.value = '';
   }
