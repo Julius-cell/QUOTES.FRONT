@@ -13,8 +13,8 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = this.fb.group({
-    email: ['julio@gmail.com', [Validators.required, Validators.email]],
-    password: ['pass12345', [Validators.required, Validators.minLength(8)]]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]]
   })
 
   constructor(private fb: FormBuilder,

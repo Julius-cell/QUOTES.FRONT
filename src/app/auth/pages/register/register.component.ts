@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RespUser } from '../../models/response';
 import { AuthService } from '../../services/auth.service';
 
@@ -19,7 +18,6 @@ export class RegisterComponent implements OnInit {
   })
 
   constructor(private fb: FormBuilder,
-              private router: Router,
               private authService: AuthService) { }
 
   ngOnInit(): void {}
@@ -29,6 +27,5 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm.value).subscribe((resp: RespUser) => {
       console.log(resp);
     })
-    // this.router.navigateByUrl('/quotes');
   }
 }
