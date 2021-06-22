@@ -1,27 +1,43 @@
-# AppQuotes
+# Quotes - Front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
+**Version 1.0.0**
 
-## Development server
+Este proyecto nace por mi gusto por aquellas frases que alguna ves se han presentado a mi vida y su significado ha hecho eco en mí. Ya que estaba gastando muchas páginas de mis libretas, preferí almacenarlas en una DB y poder acceder a ellas de una forma más práctica.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Si compartes este gusto entonces te invito a colaborar con alguna de tus frases preferidas: [Quotes](https://quotes-jc.herokuapp.com/#/quotes).
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologies & Libraries:
 
-## Build
+- Angular
+- Primeng
+- TypeScript
+- HTML / CSS
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+---
 
-## Running unit tests
+## Run Server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Clone or download the repo
+- Run 'ng serve'
+- Navigate to 'http://localhost:4200/'
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Learn More
 
-## Further help
+- To learn Express, check out the [Angular documentation](https://angular.io/).
+- To learn Mongoose, check out the [Primeng documentation](https://primefaces.org/primeng/showcase).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## Authors
+
+- Julio Cid <julio.cid.b@gmail.com>.
+
+---
+
+## License & copyright
+
+Julio Cid, Frontend Developer.
