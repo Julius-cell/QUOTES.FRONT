@@ -27,8 +27,8 @@ Si compartes este gusto entonces te invito a colaborar con alguna de tus frases 
 
 ## Learn More
 
-- To learn Express, check out the [Angular documentation](https://angular.io/).
-- To learn Mongoose, check out the [Primeng documentation](https://primefaces.org/primeng/showcase).
+- To learn Angular, check out the [Angular documentation](https://angular.io/).
+- To learn PrimeNg, check out the [Primeng documentation](https://primefaces.org/primeng/showcase).
 
 ---
 
